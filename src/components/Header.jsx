@@ -15,7 +15,7 @@ export default function Header({ showBack = false }) {
           </button>
         ) : (
           <div className="header-logo">
-            <img src={`${import.meta.env.BASE_URL}enbd-logo-horizontal.jpg`} alt="Emirates NBD" />
+            <img src={`${import.meta.env.BASE_URL}enbd-icon.jpg`} alt="Emirates NBD" />
           </div>
         )}
       </div>

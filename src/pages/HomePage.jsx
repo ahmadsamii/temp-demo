@@ -57,6 +57,13 @@ const SERVICE_REQUESTS = [
 
 const statusClass = { 'In Progress': 'badge--progress', 'Closed': 'badge--closed', 'Completed': 'badge--complete' }
 
+function getGreeting() {
+  const h = new Date().getHours()
+  if (h < 12) return 'Good morning'
+  if (h < 17) return 'Good afternoon'
+  return 'Good evening'
+}
+
 export default function HomePage() {
   const navigate = useNavigate()
   const [chatInput, setChatInput] = useState('My card is lost')
@@ -76,7 +83,7 @@ export default function HomePage() {
 
         {/* Greeting */}
         <div className="home-greeting">
-          <p className="home-greeting-sub">Good morning</p>
+          <p className="home-greeting-sub">{getGreeting()}</p>
           <h2 className="home-greeting-name">Ahmed Al Mansoori</h2>
         </div>
 

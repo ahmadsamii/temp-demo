@@ -57,58 +57,35 @@
   object-fit: contain;
 }
 
-.login-card {
-  width: 100%;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 32px 24px;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.login-welcome {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: -0.5px;
-}
-
-.login-sub {
-  font-size: 14px;
-  color: var(--secondary-light);
-  font-weight: 400;
-  margin-bottom: 24px;
-}
-
 .uae-pass-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
-  padding: 16px 20px;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: var(--radius);
-  font-size: 16px;
-  font-weight: 700;
+  padding: 14px 24px;
+  background: var(--white);
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 800;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-  box-shadow: 0 4px 20px rgba(7, 36, 71, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: -0.2px;
 }
 
 .uae-pass-btn:active {
-  transform: scale(0.98);
-  box-shadow: 0 2px 10px rgba(7, 36, 71, 0.2);
+  transform: scale(0.97);
 }
 
 .uae-pass-icon {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .uae-pass-icon svg {
@@ -116,22 +93,10 @@
   height: 100%;
 }
 
-.uae-pass-btn span {
-  flex: 1;
-  text-align: left;
-}
-
-.uae-pass-arrow {
-  width: 20px;
-  height: 20px;
-  opacity: 0.7;
-}
-
 .login-hint {
   font-size: 12px;
   color: var(--secondary-light);
   text-align: center;
-  margin-top: 8px;
 }
 
 .login-footer {
