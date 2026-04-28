@@ -4,56 +4,6 @@
   flex-direction: column;
 }
 
-.chat-agent-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 20px;
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-}
-
-.chat-agent-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: var(--white);
-  font-size: 16px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.chat-agent-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.chat-agent-name {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.chat-agent-status {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: #1A9148;
-  font-weight: 500;
-}
-
-.chat-agent-dot {
-  width: 7px;
-  height: 7px;
-  background: #1A9148;
-  border-radius: 50%;
-}
 
 .chat-messages {
   flex: 1;

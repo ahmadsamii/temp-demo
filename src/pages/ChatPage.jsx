@@ -44,12 +44,15 @@ function formatTime(date) {
   return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
 }
 
+const AGENT = { name: 'Sarah', title: 'ENBD Customer Support' }
+
 export default function ChatPage() {
   const location = useLocation()
   const initialMessage = location.state?.initialMessage || ''
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)
+  const [agentStatus, setAgentStatus] = useState('connecting') // 'connecting' | 'connected'
   const bottomRef = useRef(null)
   const initialized = useRef(false)
 
@@ -59,46 +62,48 @@ export default function ChatPage() {
 
     const now = new Date()
     const msgs = []
-
     if (initialMessage) {
       msgs.push({ id: 1, role: 'user', text: initialMessage, time: formatTime(now) })
     }
-
-    msgs.push({
-      id: 2,
-      role: 'system',
-      text: 'Connecting you to an agent...',
-      time: formatTime(now),
-    })
-
+    msgs.push({ id: 2, role: 'system', text: 'Connecting you to an agent...', time: formatTime(now) })
     setMessages(msgs)
 
+    // Agent connects
     setTimeout(() => {
+      setAgentStatus('connected')
       setMessages(prev => [
         ...prev,
-        {
-          id: 3,
-          role: 'agent',
-          text: "Hello! I'm Sarah from ENBD Customer Support. How can I assist you today?",
-          time: formatTime(new Date()),
-        },
+        { id: 3, role: 'system', text: `${AGENT.name} from ${AGENT.title} has joined the chat`, time: formatTime(new Date()) },
       ])
 
-      if (initialMessage) {
-        setTimeout(() => {
-          setTyping(true)
+      // Agent greeting
+      setTimeout(() => {
+        setMessages(prev => [
+          ...prev,
+          {
+            id: 4,
+            role: 'agent',
+            text: `Hello! I'm ${AGENT.name} from ${AGENT.title}. How can I assist you today?`,
+            time: formatTime(new Date()),
+          },
+        ])
+
+        // Auto-reply to initial message
+        if (initialMessage) {
           setTimeout(() => {
-            const replies = getBotReply(initialMessage)
-            const reply = replies[0]
-            setTyping(false)
-            setMessages(prev => [
-              ...prev,
-              { id: Date.now(), role: 'agent', text: reply, time: formatTime(new Date()) },
-            ])
-          }, 1500)
-        }, 800)
-      }
-    }, 1200)
+            setTyping(true)
+            setTimeout(() => {
+              setTyping(false)
+              const replies = getBotReply(initialMessage)
+              setMessages(prev => [
+                ...prev,
+                { id: Date.now(), role: 'agent', text: replies[0], time: formatTime(new Date()) },
+              ])
+            }, 1600)
+          }, 900)
+        }
+      }, 800)
+    }, 1800)
   }, [])
 
   useEffect(() => {
@@ -108,39 +113,44 @@ export default function ChatPage() {
   function sendMessage(e) {
     e.preventDefault()
     if (!input.trim()) return
-
     const text = input.trim()
     setInput('')
-    const userMsg = { id: Date.now(), role: 'user', text, time: formatTime(new Date()) }
-    setMessages(prev => [...prev, userMsg])
-
+    setMessages(prev => [...prev, { id: Date.now(), role: 'user', text, time: formatTime(new Date()) }])
     setTyping(true)
     setTimeout(() => {
       const replies = getBotReply(text)
-      const reply = replies[Math.floor(Math.random() * replies.length)]
       setTyping(false)
       setMessages(prev => [
         ...prev,
-        { id: Date.now(), role: 'agent', text: reply, time: formatTime(new Date()) },
+        { id: Date.now(), role: 'agent', text: replies[Math.floor(Math.random() * replies.length)], time: formatTime(new Date()) },
       ])
     }, 1200 + Math.random() * 600)
   }
 
+  const chatHeader = (
+    agentStatus === 'connecting' ? (
+      <>
+        <span className="header-center-name">Chat with Agent</span>
+        <span className="header-center-status header-center-status--connecting">
+          <span className="header-status-pulse" />
+          Connecting...
+        </span>
+      </>
+    ) : (
+      <>
+        <span className="header-center-name">{AGENT.name} — {AGENT.title}</span>
+        <span className="header-center-status header-center-status--online">
+          <span className="header-status-dot" />
+          Online
+        </span>
+      </>
+    )
+  )
+
   return (
     <>
-      <Header showBack={true} />
+      <Header showBack={true} chatHeader={chatHeader} />
       <div className="page-content chat-content">
-        <div className="chat-agent-bar">
-          <div className="chat-agent-avatar">S</div>
-          <div className="chat-agent-info">
-            <span className="chat-agent-name">Sarah — ENBD Support</span>
-            <span className="chat-agent-status">
-              <span className="chat-agent-dot" />
-              Online
-            </span>
-          </div>
-        </div>
-
         <div className="chat-messages">
           {messages.map(msg => (
             <div key={msg.id} className={`chat-msg chat-msg--${msg.role}`}>
@@ -154,7 +164,6 @@ export default function ChatPage() {
               )}
             </div>
           ))}
-
           {typing && (
             <div className="chat-msg chat-msg--agent">
               <div className="chat-bubble chat-bubble--typing">
@@ -164,11 +173,9 @@ export default function ChatPage() {
           )}
           <div ref={bottomRef} />
         </div>
-
         <div style={{ height: '88px' }} />
       </div>
 
-      {/* Sticky input */}
       <div className="chat-input-bar">
         <form className="chat-input-form" onSubmit={sendMessage}>
           <input

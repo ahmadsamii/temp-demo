@@ -82,6 +82,67 @@ html, body {
   border-radius: 6px;
 }
 
+.app-header--chat {
+  justify-content: space-between;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.header-center-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-center-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.header-center-status--connecting {
+  color: var(--secondary-light);
+}
+
+.header-center-status--online {
+  color: #1A9148;
+}
+
+.header-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1A9148;
+  flex-shrink: 0;
+}
+
+.header-status-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--secondary-light);
+  flex-shrink: 0;
+  animation: pulse 1.2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
 .header-back {
   display: flex;
   align-items: center;

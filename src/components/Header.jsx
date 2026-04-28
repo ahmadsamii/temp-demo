@@ -1,17 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 
-export default function Header({ showBack = false }) {
+export default function Header({ showBack = false, chatHeader = null }) {
   const navigate = useNavigate()
 
   return (
-    <header className="app-header">
+    <header className={`app-header${chatHeader ? ' app-header--chat' : ''}`}>
       <div className="header-left">
         {showBack ? (
           <button className="header-back" onClick={() => navigate(-1)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
             </svg>
-            Back
           </button>
         ) : (
           <div className="header-logo">
@@ -19,6 +18,13 @@ export default function Header({ showBack = false }) {
           </div>
         )}
       </div>
+
+      {chatHeader && (
+        <div className="header-center">
+          {chatHeader}
+        </div>
+      )}
+
       <button className="header-menu" aria-label="Menu">
         <span />
         <span />
