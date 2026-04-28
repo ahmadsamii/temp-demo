@@ -1,0 +1,168 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --primary: #072447;
+  --secondary: #4C515A;
+  --accent: #2765FF;
+  --light: #D9D9D6;
+  --secondary-light: #9295A0;
+  --white: #ffffff;
+  --surface: #F5F6F8;
+  --border: rgba(7, 36, 71, 0.08);
+
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --header-h: 60px;
+  --footer-h: 80px;
+  --max-w: 430px;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 2px 16px rgba(7, 36, 71, 0.10);
+  --shadow-lg: 0 8px 32px rgba(7, 36, 71, 0.16);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background: #0a1628;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #0a1628 0%, #0d2240 40%, #0a1e3d 100%);
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-w);
+  min-height: 100dvh;
+  background: var(--surface);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-w);
+  height: var(--header-h);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+}
+
+.header-logo img {
+  height: 28px;
+  object-fit: contain;
+}
+
+.header-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.header-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.header-menu span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+.page-content {
+  flex: 1;
+  margin-top: var(--header-h);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+/* Section headings */
+.section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+}
+
+/* Horizontal scroll row */
+.h-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 20px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.h-scroll > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Pill badge */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+}
+.badge--progress { background: #FFF3CD; color: #7D5A00; }
+.badge--closed   { background: #E8E8E8; color: #555; }
+.badge--complete { background: #D4EDDA; color: #1A6B31; }
+
+button, a { font-family: var(--font); }
