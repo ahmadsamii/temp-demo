@@ -36,25 +36,25 @@
   left: -80px;
 }
 
-.login-body {
+.login-top {
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 28px;
-  gap: 32px;
-}
-
-.login-logo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 60px 28px 40px;
 }
 
 .login-logo {
-  width: 220px;
+  width: 200px;
   object-fit: contain;
+}
+
+.login-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 28px 36px;
 }
 
 .uae-pass-btn {

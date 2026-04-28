@@ -18,11 +18,11 @@ export default function LoginPage() {
         <div className="login-blob login-blob--2" />
       </div>
 
-      <div className="login-body">
-        <div className="login-logo-wrap">
-          <img src={`${import.meta.env.BASE_URL}EmiratesNBD-Logo.jpg`} alt="Emirates NBD" className="login-logo" />
-        </div>
+      <div className="login-top">
+        <img src={`${import.meta.env.BASE_URL}EmiratesNBD-Logo.jpg`} alt="Emirates NBD" className="login-logo" />
+      </div>
 
+      <div className="login-bottom">
         <button className="uae-pass-btn" onClick={handleUAEPass}>
           <div className="uae-pass-icon">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,9 +41,7 @@ export default function LoginPage() {
           </div>
           <span>Sign in with UAE PASS</span>
         </button>
-
         <p className="login-hint">Secure authentication via UAE digital identity</p>
-
         <p className="login-footer">© 2026 Emirates NBD. All rights reserved.</p>
       </div>
 
