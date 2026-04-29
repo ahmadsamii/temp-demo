@@ -4,22 +4,22 @@
 }
 
 .home-greeting {
-  padding: 12px 20px 10px;
+  padding: 10px clamp(14px, 4vw, 20px) 9px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 5px;
 }
 
 .home-greeting-sub {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--secondary-light);
   font-weight: 500;
 }
 
 .home-greeting-name {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: var(--primary);
   letter-spacing: -0.2px;
@@ -28,36 +28,37 @@
 .home-section {
   background: var(--white);
   margin-top: 8px;
-  padding: 16px 0 20px;
+  padding: 14px 10px 15px;
   border-radius: 0;
 }
 
 .home-section .home-section-header {
-  padding: 0 20px 12px;
+  padding: 0 clamp(14px, 4vw, 20px) 10px;
 }
 
 .home-section--last {
-  padding-bottom: 24px;
+  padding-bottom: 20px;
 }
 
 .home-section-header {
-  padding: 0 20px 12px;
+  padding: 0 clamp(14px, 4vw, 20px) 10px;
 }
 
 /* Story cards (Explore Products) */
 .products-scroll {
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .story-card {
   position: relative;
-  width: 120px;
-  height: 170px;
-  border-radius: 16px;
+  width: clamp(100px, 28vw, 115px);
+  height: clamp(140px, 42vw, 165px);
+  border-radius: var(--radius);
   overflow: hidden;
   flex-shrink: 0;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(7,36,71,0.12);
+  box-shadow: 0 2px 10px rgba(7,36,71,0.12);
+  touch-action: manipulation;
 }
 
 .story-card-img {
@@ -75,11 +76,11 @@
 
 .story-card-label {
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
   left: 0;
   right: 0;
-  padding: 0 10px;
-  font-size: 12px;
+  padding: 0 8px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--white);
   line-height: 1.3;
@@ -88,18 +89,19 @@
 
 /* Recommended cards */
 .reco-scroll {
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .reco-card {
   position: relative;
-  width: 240px;
-  height: 140px;
-  border-radius: 16px;
+  width: clamp(190px, 57vw, 228px);
+  height: clamp(115px, 34vw, 134px);
+  border-radius: var(--radius);
   overflow: hidden;
   flex-shrink: 0;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(7,36,71,0.12);
+  box-shadow: 0 2px 10px rgba(7,36,71,0.12);
+  touch-action: manipulation;
 }
 
 .reco-card-img {
@@ -117,23 +119,23 @@
 
 .reco-card-body {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
-  right: 14px;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
 }
 
 .reco-card-name {
   display: block;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 800;
   color: var(--white);
   letter-spacing: -0.2px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .reco-card-desc {
   display: block;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: rgba(255,255,255,0.75);
   font-weight: 400;
   line-height: 1.4;
@@ -144,15 +146,15 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
-  padding: 0 20px;
+  padding: 0 clamp(14px, 4vw, 20px);
 }
 
 .sr-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 10px;
+  padding: 12px 14px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -160,7 +162,8 @@
   text-align: left;
   width: 100%;
   transition: background 0.15s;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
+  touch-action: manipulation;
 }
 
 .sr-item:active { background: var(--light); }
@@ -174,7 +177,7 @@
 }
 
 .sr-item-title {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--primary);
   white-space: nowrap;
@@ -183,12 +186,12 @@
 }
 
 .sr-item-meta {
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--secondary-light);
   font-weight: 400;
 }
 
-/* Chat footer */
+/* Chat footer (sticky input on home page) */
 .chat-footer {
   position: fixed;
   bottom: 0;
@@ -200,19 +203,19 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
-  padding: 10px 16px 24px;
+  padding: 10px clamp(12px, 4vw, 16px) calc(14px + var(--safe-bottom));
   z-index: 50;
   box-shadow: 0 -4px 20px rgba(7,36,71,0.08);
 }
 
 .chat-footer-label {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
   color: var(--secondary-light);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin-bottom: 8px;
-  padding: 0 4px;
+  margin-bottom: 7px;
+  padding: 0 3px;
 }
 
 .chat-footer-form {
@@ -223,11 +226,11 @@
 
 .chat-footer-input {
   flex: 1;
-  height: 44px;
+  height: 42px;
   border: 1.5px solid var(--border);
-  border-radius: 22px;
-  padding: 0 16px;
-  font-size: 15px;
+  border-radius: 21px;
+  padding: 0 14px;
+  font-size: 0.9375rem;
   font-family: var(--font);
   color: var(--primary);
   background: var(--surface);
@@ -240,8 +243,8 @@
 }
 
 .chat-footer-send {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: var(--primary);
   border: none;
@@ -252,13 +255,21 @@
   flex-shrink: 0;
   transition: transform 0.15s, background 0.15s;
   box-shadow: 0 2px 10px rgba(7,36,71,0.25);
+  touch-action: manipulation;
 }
 
 .chat-footer-send:active { transform: scale(0.93); }
 
 .chat-footer-send svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   color: white;
   margin-left: 2px;
+}
+
+/* Retina hairline borders */
+@media (min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2) {
+  .sr-item { border-width: 0.5px; }
+  .chat-footer { border-top-width: 0.5px; }
+  .chat-footer-input { border-width: 1px; }
 }

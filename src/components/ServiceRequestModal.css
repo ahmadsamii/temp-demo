@@ -15,55 +15,57 @@
   max-width: var(--max-w);
   margin: 0 auto;
   background: var(--white);
-  border-radius: 24px 24px 0 0;
-  padding: 24px 24px 40px;
+  border-radius: 22px 22px 0 0;
+  padding: 20px clamp(18px, 5vw, 24px) calc(clamp(24px, 6dvh, 36px) + var(--safe-bottom));
   max-height: 88dvh;
   overflow-y: auto;
   animation: slideUp 0.32s cubic-bezier(0.34, 1.3, 0.64, 1);
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-close {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--surface);
   border: none;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   color: var(--secondary);
+  touch-action: manipulation;
 }
 
-.modal-close svg { width: 16px; height: 16px; }
+.modal-close svg { width: 15px; height: 15px; }
 
 .modal-title {
-  font-size: 20px;
+  font-size: clamp(17px, 4.5vw, 20px);
   font-weight: 800;
   color: var(--primary);
-  letter-spacing: -0.4px;
-  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  margin-bottom: 18px;
 }
 
 .modal-meta-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 18px;
   background: var(--surface);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 14px;
 }
 
 .modal-meta-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .modal-meta-label {
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 700;
   color: var(--secondary-light);
   letter-spacing: 0.8px;
@@ -71,36 +73,36 @@
 }
 
 .modal-meta-value {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--primary);
 }
 
 .modal-desc-block {
-  margin-bottom: 24px;
-  padding: 16px;
+  margin-bottom: 20px;
+  padding: 14px;
   background: var(--surface);
   border-radius: var(--radius);
 }
 
 .modal-desc-title {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .modal-desc-body {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--secondary);
   line-height: 1.6;
 }
 
 .modal-timeline-heading {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .timeline {
@@ -119,8 +121,8 @@
 }
 
 .timeline-dot {
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: var(--light);
   border: 2px solid var(--light);
@@ -135,7 +137,7 @@
 
 .timeline-line {
   position: absolute;
-  top: 6px;
+  top: 5px;
   left: 50%;
   width: 100%;
   height: 2px;
@@ -152,12 +154,12 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  margin-top: 8px;
+  margin-top: 7px;
   text-align: center;
 }
 
 .timeline-label {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
   color: var(--primary);
 }
@@ -167,6 +169,12 @@
 }
 
 .timeline-date {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--secondary-light);
+}
+
+/* Retina hairlines */
+@media (min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2) {
+  .timeline-line { height: 1px; }
+  .timeline-dot { border-width: 1.5px; }
 }

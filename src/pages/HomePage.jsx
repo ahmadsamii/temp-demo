@@ -8,37 +8,10 @@ import './HomePage.css'
 const PRODUCTS = [
   {
     id: 1, name: 'Premium Credit Cards',
-    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=300&h=400&fit=crop',
-    heading: 'Emirates NBD Signature Visa Platinum Card',
-    intro: 'Experience the pinnacle of banking privileges with our Signature Visa Platinum Card — designed for those who expect more from every purchase.',
-    action: 'Apply Now',
-    highlights: [
-      { icon: '💳', label: 'Annual Fee', value: 'AED 0*' },
-      { icon: '💰', label: 'Cash Back', value: 'Up to 5%' },
-      { icon: '✈️', label: 'Lounge Access', value: '8 visits/yr' },
-      { icon: '🏦', label: 'Credit Limit', value: 'Up to AED 150K' },
-    ],
-    sections: [
-      {
-        title: 'Key Benefits',
-        items: [
-          '5% cashback on dining & entertainment worldwide',
-          '2% cashback on all other local & international spends',
-          'Complimentary travel insurance up to AED 750,000',
-          'Airport lounge access at 1,000+ lounges globally',
-          '0% Easy Payment Plan on purchases over AED 500',
-        ],
-      },
-      {
-        title: 'Eligibility',
-        items: [
-          'Minimum monthly salary: AED 10,000',
-          'UAE resident with valid Emirates ID',
-          'Age 21–65 years',
-        ],
-      },
-      { title: 'Terms & Conditions', text: '*Annual fee waived for the first year. Standard fee of AED 300 applies from year two. Cash back credited monthly. Lounge access subject to fair use policy.' },
-    ],
+    isCreditCard: true,
+    img: 'https://plus.unsplash.com/premium_photo-1700824489477-2cf2ec67de38??w=300&h=400&fit=crop',
+    heading: 'Find Your Perfect Credit Card',
+    intro: 'Unlock a world of rewards, travel privileges, and exclusive lifestyle benefits — tailored just for you. Emirates NBD offers UAE\'s most sought-after range of credit cards across every lifestyle and income level.',
   },
   {
     id: 2, name: 'Investment Funds',
@@ -453,7 +426,7 @@ export default function HomePage() {
 
       {/* Sticky Chat Footer */}
       <div className="chat-footer">
-        <p className="chat-footer-label">Chat with Agent</p>
+        <p className="chat-footer-label">Get in touch with a customer services agent</p>
         <form className="chat-footer-form" onSubmit={handleChatSubmit}>
           <input
             className="chat-footer-input"
